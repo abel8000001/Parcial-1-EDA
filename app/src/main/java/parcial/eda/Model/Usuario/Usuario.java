@@ -49,8 +49,28 @@ public class Usuario {
         return saldo;
     }
 
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
+
     public String getNombre(){
         return nombre;
+    }
+
+    public Bag<Criptomoneda> getPortafolio() {
+        return portafolio;
+    }
+
+    public void setPortafolio(Bag<Criptomoneda> portafolio) {
+        this.portafolio = portafolio;
+    }
+
+    public Stack<Transaccion> getHistorial() {
+        return historial;
+    }
+
+    public void addEntradaHistorial(Transaccion transaccion) {
+        historial.push(transaccion);
     }
 
 }

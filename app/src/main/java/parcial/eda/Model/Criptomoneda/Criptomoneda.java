@@ -49,4 +49,8 @@ public class Criptomoneda {
                 '}';
     }
 
+    public double getPrice_usdAsDouble() {
+        return Double.parseDouble(price_usd);
+    }
+
 }

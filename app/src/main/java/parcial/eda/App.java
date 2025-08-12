@@ -6,32 +6,86 @@ package parcial.eda;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import java.util.Random;
 
 import parcial.eda.Model.Criptomoneda.Criptomoneda;
+import parcial.eda.Model.Mercado.Mercado;
+import parcial.eda.Model.Transaccion.Transaccion;
 import parcial.eda.Model.Usuario.Usuario;
 import parcial.eda.Services.ApiManager;
-import parcial.eda.Services.Utils;
+import parcial.eda.Services.ProcesadorTransacciones;
+import parcial.eda.Services.Utilidades;
 
 public class App {
     public static void main(String[] args) {
         int turno = 0;
         List<Criptomoneda> criptomonedas = ApiManager.consumirApi();
         Queue<Usuario> usuarios = new LinkedList<>();
+        Random random = new Random();
+        int tamañoPortafolioActual;
+        int target;
+        int indiceMonedaAleatoria;
+        Criptomoneda monedaAleatoria = new Criptomoneda();
+        Transaccion transaccionActual;
 
         for (int i = 0; i < 5; i++) {
             usuarios.add(new Usuario("usuario" + i));
-            System.out.println(usuarios.poll().getNombre());
         }
 
         while (turno < 10) {
-            // Fluctuacion monedas
-            for (Criptomoneda moneda : criptomonedas) {
-                moneda.setPrice_usd(Double.toString(Double.parseDouble(moneda.getPrice_usd()) * Utils.randomInRange(0.95, 1.05)));
+
+            // Ciclo de compra y venta
+            for (Usuario usuario : usuarios) {
+                switch (random.nextInt(2)) {
+                    case 0:
+                        Mercado.comprar(usuario, criptomonedas.get(random.nextInt(100)), random.nextInt(100));
+                        break;
+                    case 1:
+                        tamañoPortafolioActual = usuario.getPortafolio().size();
+                        if (tamañoPortafolioActual > 0) {
+                            Random rand = new Random();
+                            target = rand.nextInt(tamañoPortafolioActual);
+                            indiceMonedaAleatoria = 0;
+                            for (Criptomoneda c : usuario.getPortafolio()) {
+                                if (indiceMonedaAleatoria == target) {
+                                    monedaAleatoria = c;
+                                    break;
+                                }
+                                indiceMonedaAleatoria++;
+                            }
+                            Mercado.vender(usuario, monedaAleatoria, random.nextInt(100));
+                        }
+                        break;
+                    default:
+                        System.out.println("Error inesperado");
+                        break;
+                }
             }
 
+            // Verificacion de las transacciones
+            ProcesadorTransacciones.procesarTransacciones();
 
-
+            // Fluctuacion monedas
+            for (Criptomoneda moneda : criptomonedas) {
+                moneda.setPrice_usd(
+                        Double.toString(moneda.getPrice_usdAsDouble() * Utilidades.randomEnRango(0.90, 1.10)));
+            }
             turno++;
+        }
+
+        // Reporte final
+        for (Usuario usuario : usuarios) {
+            System.out.println("Usuario: " + usuario.getNombre());
+            System.out.println("Saldo: " + Utilidades.pesoAUsd(usuario.getSaldo()) + "$");
+            System.out.println("Valor total del portafolio:" /* TODO */);
+            for (Criptomoneda criptomoneda : usuario.getPortafolio().uniqueSet()) {
+                System.out.println(criptomoneda.getName() + ": " + usuario.getPortafolio().getCount(criptomoneda));
+            }
+
+            while (!usuario.getHistorial().isEmpty()) {
+                transaccionActual = usuario.getHistorial().pop();
+                System.out.println(transaccionActual.toString());
+            }
         }
     }
 }

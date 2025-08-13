@@ -11,7 +11,7 @@ public class Transaccion {
     private static final Logger logger = LogManager.getLogger(Transaccion.class);
 
     private String tipo;
-    private Usuario usuario;
+    private transient Usuario usuario;
     private Criptomoneda criptomoneda;
     private int cantidadCripto;
     private double valorTotal;
@@ -23,7 +23,7 @@ public class Transaccion {
             this.usuario = usuario;
             this.criptomoneda = criptomoneda;
             this.cantidadCripto = cantidadCripto;
-            this.valorTotal = criptomoneda.getPrice_usdAsDouble() * cantidadCripto;
+            this.valorTotal = getValorTotal();
             this.estado = "Pendiente";
             logger.info("Transacción creada: Tipo=" + tipo +
                         ", Usuario=" + usuario.getNombre() +
@@ -64,7 +64,7 @@ public class Transaccion {
     }
 
     public double getValorTotal() {
-        return valorTotal;
+        return criptomoneda.getPrice_usdAsDouble() * cantidadCripto;
     }
 
     public String getEstado() {

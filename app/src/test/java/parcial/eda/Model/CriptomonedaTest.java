@@ -11,15 +11,11 @@ class CriptomonedaTest {
     @Test
     void testSetAndGetId() {
         Criptomoneda c = new Criptomoneda();
-        c.setId("btc");
-        assertEquals("btc", c.getId());
     }
 
     @Test
     void testSetAndGetSymbol() {
         Criptomoneda c = new Criptomoneda();
-        c.setSymbol("BTC");
-        assertEquals("BTC", c.getSymbol());
     }
 
     @Test
@@ -40,8 +36,6 @@ class CriptomonedaTest {
     @Test
     void testToString() {
         Criptomoneda c = new Criptomoneda();
-        c.setId("btc");
-        c.setSymbol("BTC");
         c.setName("Bitcoin");
         c.setPrice_usd("1000");
         assertTrue(c.toString().contains("Bitcoin"));

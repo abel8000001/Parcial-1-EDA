@@ -3,7 +3,13 @@
  */
 package parcial.eda;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 import java.util.Queue;
 import java.util.Random;
 import java.util.Stack;
@@ -11,15 +17,22 @@ import java.util.Stack;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonSerializer;
+
 import parcial.eda.Model.Criptomoneda.Criptomoneda;
 import parcial.eda.Model.Mercado.Mercado;
 import parcial.eda.Model.Transaccion.Transaccion;
 import parcial.eda.Model.Usuario.Usuario;
 import parcial.eda.Services.ProcesadorTransacciones;
 import parcial.eda.Services.Utilidades;
+import parcial.eda.Services.ReporteUsuario;
 
 public class App {
     private static final Logger logger = LogManager.getLogger(App.class);
+
     public static void main(String[] args) {
         try {
             logger.info("Inicio de la aplicación de simulación de mercado de criptomonedas");
@@ -57,7 +70,8 @@ public class App {
                             switch (random.nextInt(2)) {
                                 case 0:
                                     logger.info(usuario.getNombre() + " intentará realizar una compra");
-                                    Mercado.comprar(usuario, Mercado.criptomonedas.get(random.nextInt(100)), random.nextInt(100));
+                                    Mercado.comprar(usuario, Mercado.criptomonedas.get(random.nextInt(100)),
+                                            random.nextInt(100));
                                     break;
                                 case 1:
                                     logger.info(usuario.getNombre() + " intentará realizar una venta");
@@ -84,8 +98,10 @@ public class App {
                                     break;
                             }
                         } catch (Exception e) {
-                            logger.error("Error en compra/venta para usuario " + usuario.getNombre() + ": " + e.getMessage());
-                            System.out.println("Error en compra/venta para usuario " + usuario.getNombre() + ": " + e.getMessage());
+                            logger.error("Error en compra/venta para usuario " + usuario.getNombre() + ": "
+                                    + e.getMessage());
+                            System.out.println("Error en compra/venta para usuario " + usuario.getNombre() + ": "
+                                    + e.getMessage());
                         }
                     }
 
@@ -96,23 +112,37 @@ public class App {
                         for (Usuario usuario : usuarios) {
                             Stack<Transaccion> historial = usuario.getHistorial();
                             if (historial == null || historial.isEmpty()) {
-                                logger.info("El usuario " + usuario.getNombre() + " no tiene transacciones registradas");
+                                logger.info(
+                                        "El usuario " + usuario.getNombre() + " no tiene transacciones registradas");
                                 continue;
                             }
                             transaccionActual = historial.peek();
 
-                            if (transaccionActual.getTipo() == "Compra" && transaccionActual.getEstado() == "Aprobado") {
+                            if (transaccionActual.getTipo() == "Compra"
+                                    && transaccionActual.getEstado() == "Aprobado") {
                                 logger.info("Compra aprobada para " + usuario.getNombre());
-                                System.out.println(usuario.getNombre() + " compró exitosamente " + transaccionActual.getCantidadCripto() + " " + transaccionActual.getCriptomoneda().getName() + " por $USD " + transaccionActual.getValorTotal());
-                            } else if (transaccionActual.getTipo() == "Compra" && transaccionActual.getEstado() == "Rechazado") {
+                                System.out.println(usuario.getNombre() + " compró exitosamente "
+                                        + transaccionActual.getCantidadCripto() + " "
+                                        + transaccionActual.getCriptomoneda().getName() + " por $USD "
+                                        + transaccionActual.getValorTotal());
+                            } else if (transaccionActual.getTipo() == "Compra"
+                                    && transaccionActual.getEstado() == "Rechazado") {
                                 logger.info("Compra rechazada para " + usuario.getNombre());
-                                System.out.println(usuario.getNombre() + " no tiene suficiente saldo para comprar " + transaccionActual.getCantidadCripto() + " " + transaccionActual.getCriptomoneda().getName());
-                            } else if (transaccionActual.getTipo() == "Venta" && transaccionActual.getEstado() == "Aprobado") {
+                                System.out.println(usuario.getNombre() + " no tiene suficiente saldo para comprar "
+                                        + transaccionActual.getCantidadCripto() + " "
+                                        + transaccionActual.getCriptomoneda().getName());
+                            } else if (transaccionActual.getTipo() == "Venta"
+                                    && transaccionActual.getEstado() == "Aprobado") {
                                 logger.info("Venta aprobada para " + usuario.getNombre());
-                                System.out.println(usuario.getNombre() + " vendió exitosamente" + transaccionActual.getCantidadCripto() + " " + transaccionActual.getCriptomoneda().getName() + " por $USD " + transaccionActual.getValorTotal());
-                            } else if (transaccionActual.getTipo() == "Venta" && transaccionActual.getEstado() == "Rechazado") {
+                                System.out.println(usuario.getNombre() + " vendió exitosamente"
+                                        + transaccionActual.getCantidadCripto() + " "
+                                        + transaccionActual.getCriptomoneda().getName() + " por $USD "
+                                        + transaccionActual.getValorTotal());
+                            } else if (transaccionActual.getTipo() == "Venta"
+                                    && transaccionActual.getEstado() == "Rechazado") {
                                 logger.info("Venta rechazada para " + usuario.getNombre());
-                                System.out.println(usuario.getNombre() + " no tiene suficiente " + transaccionActual.getCriptomoneda().getName() + " para vender");
+                                System.out.println(usuario.getNombre() + " no tiene suficiente "
+                                        + transaccionActual.getCriptomoneda().getName() + " para vender");
                             } else {
                                 logger.error("Transacción desconocida para " + usuario.getNombre());
                                 System.out.println("Transacción desconocida");
@@ -127,7 +157,8 @@ public class App {
                     try {
                         logger.info("Iniciando fluctuación de precios de criptomonedas");
                         for (Criptomoneda moneda : Mercado.criptomonedas) {
-                            moneda.setPrice_usd(Double.toString(moneda.getPrice_usdAsDouble() * Utilidades.randomEnRango(0.60, 1.60)));
+                            moneda.setPrice_usd(Double
+                                    .toString(moneda.getPrice_usdAsDouble() * Utilidades.randomEnRango(0.60, 1.60)));
                         }
                     } catch (Exception e) {
                         logger.error("Error en fluctuación de monedas: " + e.getMessage());
@@ -147,25 +178,7 @@ public class App {
             // Reporte final
             try {
                 logger.info("Generando reporte final de usuarios");
-                System.out.println("\n--------------------------------------------------Reporte de Usuarios--------------------------------------------------\n");
-                for (Usuario usuario : usuarios) {
-                    logger.info("Reporte generado para el usuario " + usuario.getNombre());
-                    System.out.println("Usuario: " + usuario.getNombre());
-                    System.out.println("Saldo (USD): $" + Utilidades.pesoAUsd(usuario.getSaldo()) + "\n");
-                    System.out.println("Valor total del portafolio (USD): $" + usuario.getValorTotalPortafolio());
-                    System.out.println("Portafolio final:");
-                    for (Criptomoneda criptomoneda : usuario.getPortafolio().uniqueSet()) {
-                        System.out.println("\t" + criptomoneda.getName() + ": " + usuario.getPortafolio().getCount(criptomoneda));
-                    }
-                    System.out.println("");
-                    System.out.println("**************Historico de transacciones**************\n");
-                    while (!usuario.getHistorial().isEmpty()) {
-                        transaccionActual = usuario.getHistorial().pop();
-                        System.out.println(transaccionActual.toString());
-                    }
-                    System.out.println("\n---------------------------------------------------------------------------------------------------------------------");
-                    System.out.println();
-                }
+                generarReporteUsuariosJSON(usuarios);
             } catch (Exception e) {
                 logger.error("Error en reporte final: " + e.getMessage());
                 System.out.println("Error en reporte final: " + e.getMessage());
@@ -173,6 +186,48 @@ public class App {
         } catch (Exception e) {
             logger.error("Error crítico en la ejecución de la aplicación: " + e.getMessage());
             System.out.println("Error");
+        }
+    }
+
+    public static void generarReporteUsuariosJSON(Queue<Usuario> usuarios) {
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapter(Transaccion.class, (JsonSerializer<Transaccion>) (t, type, ctx) -> {
+                    JsonObject o = new JsonObject();
+                    o.addProperty("tipo", t.getTipo());
+                    o.add("criptomoneda", ctx.serialize(t.getCriptomoneda()));
+                    o.addProperty("cantidadCripto", t.getCantidadCripto());
+                    o.addProperty("valorTotal", t.getCriptomoneda().getPrice_usdAsDouble() * t.getCantidadCripto());
+                    o.addProperty("estado", t.getEstado());
+                    return o;
+                })
+                .setPrettyPrinting()
+                .create();
+        List<ReporteUsuario> reportes = new ArrayList<>();
+
+        for (Usuario usuario : usuarios) {
+            ReporteUsuario reporte = new ReporteUsuario();
+            reporte.setNombre(usuario.getNombre());
+            reporte.setSaldoUsd(Utilidades.pesoAUsd(usuario.getSaldo()));
+            reporte.setValorTotalPortafolio(usuario.getValorTotalPortafolio());
+
+            // Convertir portafolio a mapa
+            Map<String, Integer> portafolioMap = new LinkedHashMap<>();
+            for (Criptomoneda criptomoneda : usuario.getPortafolio().uniqueSet()) {
+                portafolioMap.put(criptomoneda.getName(), usuario.getPortafolio().getCount(criptomoneda));
+            }
+            reporte.setPortafolio(portafolioMap);
+
+            // Historico de transacciones
+            reporte.setHistorico(new ArrayList<Transaccion>(usuario.getHistorial()));
+
+            reportes.add(reporte);
+        }
+
+        // Guardar a archivo
+        try (FileWriter writer = new FileWriter("reporteUsuarios.json")) {
+            gson.toJson(reportes, writer);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

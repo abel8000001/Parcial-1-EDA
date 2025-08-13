@@ -7,40 +7,10 @@ public class Criptomoneda {
 
     private static final Logger logger = LogManager.getLogger(Criptomoneda.class);
 
-    private String id;
-    private String symbol;
     private String name;
     private String price_usd;
 
     // Getters y setters con control de errores
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        try {
-            this.id = id;
-            logger.info("ID de criptomoneda establecido: " + id);
-        } catch (Exception e) {
-            logger.error("Error al establecer ID de criptomoneda", e);
-            this.id = null;
-        }
-    }
-
-    public String getSymbol() {
-        return symbol;
-    }
-
-    public void setSymbol(String symbol) {
-        try {
-            this.symbol = symbol;
-            logger.info("Símbolo de criptomoneda establecido: " + symbol);
-        } catch (Exception e) {
-            logger.error("Error al establecer símbolo de criptomoneda", e);
-            this.symbol = null;
-        }
-    }
-
     public String getName() {
         return name;
     }
@@ -84,9 +54,7 @@ public class Criptomoneda {
     public String toString() {
         try {
             String datos = "Criptomoneda{" +
-                    "id='" + id + '\'' +
-                    ", symbol='" + symbol + '\'' +
-                    ", name='" + name + '\'' +
+                    "name='" + name + '\'' +
                     ", price_usd='" + price_usd + '\'' +
                     '}';
             logger.info("Generando representación de criptomoneda: " + datos);

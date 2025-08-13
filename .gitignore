@@ -3,3 +3,4 @@ bin
 logs
 .gradle
 .vscode
+reporteUsuarios.json

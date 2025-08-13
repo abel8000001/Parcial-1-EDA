@@ -9,16 +9,6 @@ import parcial.eda.Model.Criptomoneda.Criptomoneda;
 class CriptomonedaTest {
 
     @Test
-    void testSetAndGetId() {
-        Criptomoneda c = new Criptomoneda();
-    }
-
-    @Test
-    void testSetAndGetSymbol() {
-        Criptomoneda c = new Criptomoneda();
-    }
-
-    @Test
     void testSetAndGetName() {
         Criptomoneda c = new Criptomoneda();
         c.setName("Bitcoin");

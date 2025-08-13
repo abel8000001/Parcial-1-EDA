@@ -4,7 +4,6 @@ import org.junit.jupiter.api.*;
 import parcial.eda.Model.Criptomoneda.Criptomoneda;
 import parcial.eda.Model.Transaccion.Transaccion;
 import parcial.eda.Model.Usuario.Usuario;
-import parcial.eda.Services.Utilidades;
 
 import java.io.File;
 import java.io.FileReader;

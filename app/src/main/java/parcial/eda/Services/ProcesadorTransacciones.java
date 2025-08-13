@@ -31,6 +31,7 @@ public class ProcesadorTransacciones {
                             + criptomonedaActual.getName());
                     transaccionActual.setEstado("Rechazado");
                     usuarioActual.addEntradaHistorial(transaccionActual);
+                    continue;
                 }
 
                 transaccionActual.setEstado("Aprobado");
@@ -44,6 +45,7 @@ public class ProcesadorTransacciones {
                             + " no tiene suficiente " + criptomonedaActual.getName() + " para vender");
                     transaccionActual.setEstado("Rechazado");
                     usuarioActual.addEntradaHistorial(transaccionActual);
+                    continue;
                 }
 
                 transaccionActual.setEstado("Aprobado");

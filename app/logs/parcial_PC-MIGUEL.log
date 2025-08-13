@@ -1,0 +1,359 @@
+2025-08-13 16:57:39 [Test worker] INFO  parcial.eda.Services.ApiManager - Iniciando consumo de API desde URL: https://api.coinlore.net/api/tickers/
+2025-08-13 16:57:39 [Test worker] INFO  parcial.eda.Services.ApiManager - Cliente HTTP creado correctamente
+2025-08-13 16:57:39 [Test worker] INFO  parcial.eda.Services.ApiManager - Solicitud HTTP creada correctamente
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Services.ApiManager - Respuesta recibida de la API con código de estado: 200
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Services.ApiManager - Respuesta JSON analizada correctamente
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Services.ApiManager - Se extrajeron 100 criptomonedas de la API
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Services.ApiManager - Base de datos obtenida con éxito desde la API
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Criptomoneda.Criptomoneda - Símbolo de criptomoneda establecido: BTC
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Criptomoneda.Criptomoneda - ID de criptomoneda establecido: btc
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Criptomoneda.Criptomoneda - Símbolo de criptomoneda establecido: BTC
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Criptomoneda.Criptomoneda - Nombre de criptomoneda establecido: Bitcoin
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Criptomoneda.Criptomoneda - Precio en USD establecido: 1000
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Criptomoneda.Criptomoneda - Generando representación de criptomoneda: Criptomoneda{id='btc', symbol='BTC', name='Bitcoin', price_usd='1000'}
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Criptomoneda.Criptomoneda - Nombre de criptomoneda establecido: Bitcoin
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Criptomoneda.Criptomoneda - Precio en USD establecido: 123.45
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Criptomoneda.Criptomoneda - Conversión exitosa de precio_usd a double: 123.45
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Criptomoneda.Criptomoneda - ID de criptomoneda establecido: btc
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Usuario.Usuario - Usuario creado: Nombre=Carlos, Saldo inicial=1.0E8
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Criptomoneda.Criptomoneda - Nombre de criptomoneda establecido: BTC
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Criptomoneda.Criptomoneda - Precio en USD establecido: 100
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Mercado.Mercado - Cargando lista de criptomonedas desde la API...
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Services.ApiManager - Iniciando consumo de API desde URL: https://api.coinlore.net/api/tickers/
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Services.ApiManager - Cliente HTTP creado correctamente
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Services.ApiManager - Solicitud HTTP creada correctamente
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Services.ApiManager - Respuesta recibida de la API con código de estado: 200
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Services.ApiManager - Respuesta JSON analizada correctamente
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Services.ApiManager - Se extrajeron 100 criptomonedas de la API
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Services.ApiManager - Base de datos obtenida con éxito desde la API
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Mercado.Mercado - Lista de criptomonedas cargada correctamente. Total: 100
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Mercado.Mercado - Registrando orden de compra: Usuario=Carlos, Criptomoneda=BTC, Cantidad=2
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Criptomoneda.Criptomoneda - Conversión exitosa de precio_usd a double: 100.0
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Transaccion.Transaccion - Transacción creada: Tipo=Compra, Usuario=Carlos, Criptomoneda=BTC, Cantidad=2, ValorTotal=200.0, Estado=Pendiente
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Mercado.Mercado - Orden de compra registrada con éxito
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Mercado.Mercado - Registrando orden de venta: Usuario=Carlos, Criptomoneda=BTC, Cantidad=2
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Criptomoneda.Criptomoneda - Conversión exitosa de precio_usd a double: 100.0
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Transaccion.Transaccion - Transacción creada: Tipo=Venta, Usuario=Carlos, Criptomoneda=BTC, Cantidad=2, ValorTotal=200.0, Estado=Pendiente
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Mercado.Mercado - Orden de venta registrada con éxito
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Usuario.Usuario - Usuario creado: Nombre=Test, Saldo inicial=1.0E8
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Criptomoneda.Criptomoneda - Nombre de criptomoneda establecido: BTC
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Criptomoneda.Criptomoneda - Precio en USD establecido: 1
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Mercado.Mercado - Registrando orden de compra: Usuario=Test, Criptomoneda=BTC, Cantidad=1
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Criptomoneda.Criptomoneda - Conversión exitosa de precio_usd a double: 1.0
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Transaccion.Transaccion - Transacción creada: Tipo=Compra, Usuario=Test, Criptomoneda=BTC, Cantidad=1, ValorTotal=1.0, Estado=Pendiente
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Mercado.Mercado - Orden de compra registrada con éxito
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Services.ProcesadorTransacciones - Iniciando procesamiento de transacciones. Total en cola: 3
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Transaccion.Transaccion - Generando representación de transacción: Transaccion{Tipo='Compra', Usuario='Carlos', Criptomoneda='BTC', Cantidad='2', Estado='Pendiente'}
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Services.ProcesadorTransacciones - Procesando transacción: Transaccion{Tipo='Compra', Usuario='Carlos', Criptomoneda='BTC', Cantidad='2', Estado='Pendiente'}
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Services.ProcesadorTransacciones - Tipo de transacción: Compra para usuario: Carlos
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Transaccion.Transaccion - Estado de transacción actualizado a: Aprobado
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Usuario.Usuario - Saldo actualizado para usuario Carlos: Nuevo saldo=9.92E7
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Transaccion.Transaccion - Generando representación de transacción: Transaccion{Tipo='Compra', Usuario='Carlos', Criptomoneda='BTC', Cantidad='2', Estado='Aprobado'}
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Usuario.Usuario - Transacción añadida al historial de usuario Carlos: Transaccion{Tipo='Compra', Usuario='Carlos', Criptomoneda='BTC', Cantidad='2', Estado='Aprobado'}
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Services.ProcesadorTransacciones - Compra aprobada. Usuario: Carlos, Cripto: BTC
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Transaccion.Transaccion - Generando representación de transacción: Transaccion{Tipo='Venta', Usuario='Carlos', Criptomoneda='BTC', Cantidad='2', Estado='Pendiente'}
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Services.ProcesadorTransacciones - Procesando transacción: Transaccion{Tipo='Venta', Usuario='Carlos', Criptomoneda='BTC', Cantidad='2', Estado='Pendiente'}
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Services.ProcesadorTransacciones - Tipo de transacción: Venta para usuario: Carlos
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Transaccion.Transaccion - Estado de transacción actualizado a: Aprobado
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Usuario.Usuario - Saldo actualizado para usuario Carlos: Nuevo saldo=1.0E8
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Transaccion.Transaccion - Generando representación de transacción: Transaccion{Tipo='Venta', Usuario='Carlos', Criptomoneda='BTC', Cantidad='2', Estado='Aprobado'}
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Usuario.Usuario - Transacción añadida al historial de usuario Carlos: Transaccion{Tipo='Venta', Usuario='Carlos', Criptomoneda='BTC', Cantidad='2', Estado='Aprobado'}
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Services.ProcesadorTransacciones - Venta aprobada. Usuario: Carlos, Cripto: BTC
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Transaccion.Transaccion - Generando representación de transacción: Transaccion{Tipo='Compra', Usuario='Test', Criptomoneda='BTC', Cantidad='1', Estado='Pendiente'}
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Services.ProcesadorTransacciones - Procesando transacción: Transaccion{Tipo='Compra', Usuario='Test', Criptomoneda='BTC', Cantidad='1', Estado='Pendiente'}
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Services.ProcesadorTransacciones - Tipo de transacción: Compra para usuario: Test
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Transaccion.Transaccion - Estado de transacción actualizado a: Aprobado
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Usuario.Usuario - Saldo actualizado para usuario Test: Nuevo saldo=9.9996E7
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Transaccion.Transaccion - Generando representación de transacción: Transaccion{Tipo='Compra', Usuario='Test', Criptomoneda='BTC', Cantidad='1', Estado='Aprobado'}
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Usuario.Usuario - Transacción añadida al historial de usuario Test: Transaccion{Tipo='Compra', Usuario='Test', Criptomoneda='BTC', Cantidad='1', Estado='Aprobado'}
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Services.ProcesadorTransacciones - Compra aprobada. Usuario: Test, Cripto: BTC
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Services.ProcesadorTransacciones - Procesamiento de transacciones finalizado.
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Usuario.Usuario - Usuario creado: Nombre=Luis, Saldo inicial=1.0E8
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Criptomoneda.Criptomoneda - Nombre de criptomoneda establecido: BTC
+2025-08-13 16:57:40 [Test worker] ERROR parcial.eda.Model.Criptomoneda.Criptomoneda - Error al convertir precio_usd a double
+java.lang.NullPointerException: Cannot invoke "String.trim()" because "in" is null
+	at java.base/jdk.internal.math.FloatingDecimal.readJavaFormatString(FloatingDecimal.java:1838)
+	at java.base/jdk.internal.math.FloatingDecimal.parseDouble(FloatingDecimal.java:110)
+	at java.base/java.lang.Double.parseDouble(Double.java:792)
+	at parcial.eda.Model.Criptomoneda.Criptomoneda.getPrice_usdAsDouble(Criptomoneda.java:64)
+	at parcial.eda.Model.Transaccion.Transaccion.<init>(Transaccion.java:26)
+	at parcial.eda.Model.TransaccionTest.testToString(TransaccionTest.java:44)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:218)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:214)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:139)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:198)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:169)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:93)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:58)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:141)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:57)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.processAllTestClasses(JUnitPlatformTestClassProcessor.java:119)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.access$000(JUnitPlatformTestClassProcessor.java:94)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor.stop(JUnitPlatformTestClassProcessor.java:89)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.stop(SuiteTestClassProcessor.java:62)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94)
+	at jdk.proxy1/jdk.proxy1.$Proxy2.stop(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker$3.run(TestWorker.java:193)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.executeAndMaintainThreadName(TestWorker.java:129)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:100)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:60)
+	at org.gradle.process.internal.worker.child.ActionExecutionWorker.execute(ActionExecutionWorker.java:56)
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:119)
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:66)
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Transaccion.Transaccion - Transacción creada: Tipo=Compra, Usuario=Luis, Criptomoneda=BTC, Cantidad=1, ValorTotal=-1.0, Estado=Pendiente
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Transaccion.Transaccion - Generando representación de transacción: Transaccion{Tipo='Compra', Usuario='Luis', Criptomoneda='BTC', Cantidad='1', Estado='Pendiente'}
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Usuario.Usuario - Usuario creado: Nombre=Luis, Saldo inicial=1.0E8
+2025-08-13 16:57:40 [Test worker] ERROR parcial.eda.Model.Criptomoneda.Criptomoneda - Error al convertir precio_usd a double
+java.lang.NullPointerException: Cannot invoke "String.trim()" because "in" is null
+	at java.base/jdk.internal.math.FloatingDecimal.readJavaFormatString(FloatingDecimal.java:1838)
+	at java.base/jdk.internal.math.FloatingDecimal.parseDouble(FloatingDecimal.java:110)
+	at java.base/java.lang.Double.parseDouble(Double.java:792)
+	at parcial.eda.Model.Criptomoneda.Criptomoneda.getPrice_usdAsDouble(Criptomoneda.java:64)
+	at parcial.eda.Model.Transaccion.Transaccion.<init>(Transaccion.java:26)
+	at parcial.eda.Model.TransaccionTest.testSetTipoAndEstado(TransaccionTest.java:32)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:218)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:214)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:139)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:198)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:169)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:93)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:58)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:141)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:57)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.processAllTestClasses(JUnitPlatformTestClassProcessor.java:119)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.access$000(JUnitPlatformTestClassProcessor.java:94)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor.stop(JUnitPlatformTestClassProcessor.java:89)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.stop(SuiteTestClassProcessor.java:62)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94)
+	at jdk.proxy1/jdk.proxy1.$Proxy2.stop(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker$3.run(TestWorker.java:193)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.executeAndMaintainThreadName(TestWorker.java:129)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:100)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:60)
+	at org.gradle.process.internal.worker.child.ActionExecutionWorker.execute(ActionExecutionWorker.java:56)
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:119)
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:66)
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Transaccion.Transaccion - Transacción creada: Tipo=Compra, Usuario=Luis, Criptomoneda=null, Cantidad=1, ValorTotal=-1.0, Estado=Pendiente
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Transaccion.Transaccion - Tipo de transacción actualizado a: Venta
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Transaccion.Transaccion - Estado de transacción actualizado a: Aprobado
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Usuario.Usuario - Usuario creado: Nombre=Luis, Saldo inicial=1.0E8
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Criptomoneda.Criptomoneda - Nombre de criptomoneda establecido: BTC
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Criptomoneda.Criptomoneda - Precio en USD establecido: 100
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Criptomoneda.Criptomoneda - Conversión exitosa de precio_usd a double: 100.0
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Transaccion.Transaccion - Transacción creada: Tipo=Compra, Usuario=Luis, Criptomoneda=BTC, Cantidad=2, ValorTotal=200.0, Estado=Pendiente
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Usuario.Usuario - Usuario creado: Nombre=Juan, Saldo inicial=1.0E8
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Usuario.Usuario - Usuario creado: Nombre=Ana, Saldo inicial=1.0E8
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Usuario.Usuario - Saldo actualizado para usuario Ana: Nuevo saldo=5000.0
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Usuario.Usuario - Usuario creado: Nombre=Ana, Saldo inicial=1.0E8
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Criptomoneda.Criptomoneda - Nombre de criptomoneda establecido: BTC
+2025-08-13 16:57:40 [Test worker] ERROR parcial.eda.Model.Criptomoneda.Criptomoneda - Error al convertir precio_usd a double
+java.lang.NullPointerException: Cannot invoke "String.trim()" because "in" is null
+	at java.base/jdk.internal.math.FloatingDecimal.readJavaFormatString(FloatingDecimal.java:1838)
+	at java.base/jdk.internal.math.FloatingDecimal.parseDouble(FloatingDecimal.java:110)
+	at java.base/java.lang.Double.parseDouble(Double.java:792)
+	at parcial.eda.Model.Criptomoneda.Criptomoneda.getPrice_usdAsDouble(Criptomoneda.java:64)
+	at parcial.eda.Model.Transaccion.Transaccion.<init>(Transaccion.java:26)
+	at parcial.eda.Model.UsuarioTest.testAddEntradaHistorial(UsuarioTest.java:41)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:218)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:214)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:139)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:198)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:169)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:93)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:58)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:141)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:57)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.processAllTestClasses(JUnitPlatformTestClassProcessor.java:119)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.access$000(JUnitPlatformTestClassProcessor.java:94)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor.stop(JUnitPlatformTestClassProcessor.java:89)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.stop(SuiteTestClassProcessor.java:62)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94)
+	at jdk.proxy1/jdk.proxy1.$Proxy2.stop(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker$3.run(TestWorker.java:193)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.executeAndMaintainThreadName(TestWorker.java:129)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:100)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:60)
+	at org.gradle.process.internal.worker.child.ActionExecutionWorker.execute(ActionExecutionWorker.java:56)
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:119)
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:66)
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Transaccion.Transaccion - Transacción creada: Tipo=Compra, Usuario=Ana, Criptomoneda=BTC, Cantidad=1, ValorTotal=-1.0, Estado=Pendiente
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Transaccion.Transaccion - Generando representación de transacción: Transaccion{Tipo='Compra', Usuario='Ana', Criptomoneda='BTC', Cantidad='1', Estado='Pendiente'}
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Usuario.Usuario - Transacción añadida al historial de usuario Ana: Transaccion{Tipo='Compra', Usuario='Ana', Criptomoneda='BTC', Cantidad='1', Estado='Pendiente'}
+2025-08-13 16:57:40 [Test worker] INFO  parcial.eda.Model.Usuario.Usuario - Usuario creado: Nombre=Ana, Saldo inicial=1.0E8

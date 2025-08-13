@@ -7,6 +7,7 @@ import org.apache.commons.collections4.bag.HashBag;
 
 import parcial.eda.Model.Criptomoneda.Criptomoneda;
 import parcial.eda.Model.Transaccion.Transaccion;
+import parcial.eda.Services.Utilidades;
 
 public class Usuario {
 
@@ -18,7 +19,7 @@ public class Usuario {
 
     public Usuario (String nombre){
         this.nombre = nombre;
-        saldo = 0;
+        saldo = Utilidades.randomEnRango(1, 1000000000);
         id++;
         portafolio = new HashBag<>();
         historial = new Stack<>();

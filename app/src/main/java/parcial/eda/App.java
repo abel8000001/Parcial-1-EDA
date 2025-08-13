@@ -78,6 +78,7 @@ public class App {
             System.out.println("Usuario: " + usuario.getNombre());
             System.out.println("Saldo: $" + Utilidades.pesoAUsd(usuario.getSaldo()));
             System.out.println("Valor total del portafolio:" /* TODO */);
+            System.out.println("Portafolio final:");
             for (Criptomoneda criptomoneda : usuario.getPortafolio().uniqueSet()) {
                 System.out.println(criptomoneda.getName() + ": " + usuario.getPortafolio().getCount(criptomoneda));
             }
@@ -86,6 +87,7 @@ public class App {
                 transaccionActual = usuario.getHistorial().pop();
                 System.out.println(transaccionActual.toString());
             }
+            System.out.println();
         }
     }
 }

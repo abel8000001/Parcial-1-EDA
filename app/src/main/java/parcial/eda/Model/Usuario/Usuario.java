@@ -15,10 +15,17 @@ public class Usuario {
     Stack<Transaccion> historial;
 
     public Usuario(String nombre) {
-        this.nombre = nombre;
-        saldo = 100000000;
-        portafolio = new HashBag<>();
-        historial = new Stack<>();
+        try {
+            this.nombre = nombre;
+            this.saldo = 100000000;
+            this.portafolio = new HashBag<>();
+            this.historial = new Stack<>();
+        } catch (Exception e) {
+            System.out.println("Error al crear usuario: " + e.getMessage());
+            this.portafolio = new HashBag<>();
+            this.historial = new Stack<>();
+            this.saldo = 0;
+        }
     }
 
     public double getSaldo() {
@@ -26,7 +33,11 @@ public class Usuario {
     }
 
     public void setSaldo(double saldo) {
-        this.saldo = saldo;
+        try {
+            this.saldo = saldo;
+        } catch (Exception e) {
+            System.out.println("Error al establecer saldo: " + e.getMessage());
+        }
     }
 
     public String getNombre() {
@@ -38,7 +49,11 @@ public class Usuario {
     }
 
     public void setPortafolio(Bag<Criptomoneda> portafolio) {
-        this.portafolio = portafolio;
+        try {
+            this.portafolio = portafolio;
+        } catch (Exception e) {
+            System.out.println("Error al establecer portafolio: " + e.getMessage());
+        }
     }
 
     public Stack<Transaccion> getHistorial() {
@@ -46,15 +61,23 @@ public class Usuario {
     }
 
     public double getValorTotalPortafolio() {
-        double total = 0;
-        for (Criptomoneda c : portafolio) {
-            total += c.getPrice_usdAsDouble();
+        try {
+            double total = 0;
+            for (Criptomoneda c : portafolio) {
+                total += c.getPrice_usdAsDouble();
+            }
+            return total;
+        } catch (Exception e) {
+            System.out.println("Error al calcular valor total del portafolio: " + e.getMessage());
+            return -1; // Valor de error
         }
-        return total;
     }
 
     public void addEntradaHistorial(Transaccion transaccion) {
-        historial.push(transaccion);
+        try {
+            historial.push(transaccion);
+        } catch (Exception e) {
+            System.out.println("Error al agregar transacción al historial: " + e.getMessage());
+        }
     }
-
 }

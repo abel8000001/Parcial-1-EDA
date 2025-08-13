@@ -12,13 +12,19 @@ public class Transaccion {
     private double valorTotal;
     private String estado;
 
-    public Transaccion(String tipo, Usuario usuario, Criptomoneda criptomoneda, int cantidadCripto){
-        this.tipo = tipo;
-        this.usuario = usuario;
-        this.criptomoneda = criptomoneda;
-        this.cantidadCripto = cantidadCripto;
-        valorTotal = criptomoneda.getPrice_usdAsDouble() * cantidadCripto;
-        estado = "Pendiente";
+    public Transaccion(String tipo, Usuario usuario, Criptomoneda criptomoneda, int cantidadCripto) {
+        try {
+            this.tipo = tipo;
+            this.usuario = usuario;
+            this.criptomoneda = criptomoneda;
+            this.cantidadCripto = cantidadCripto;
+            this.valorTotal = criptomoneda.getPrice_usdAsDouble() * cantidadCripto;
+            this.estado = "Pendiente";
+        } catch (Exception e) {
+            this.valorTotal = -1; // Valor de error
+            this.estado = "Error";
+            System.out.println("Error al crear transacción: " + e.getMessage());
+        }
     }
 
     public String getTipo() {
@@ -26,7 +32,11 @@ public class Transaccion {
     }
 
     public void setTipo(String tipo) {
-        this.tipo = tipo;
+        try {
+            this.tipo = tipo;
+        } catch (Exception e) {
+            System.out.println("Error al establecer tipo de transacción: " + e.getMessage());
+        }
     }
 
     public Usuario getUsuario() {
@@ -50,17 +60,25 @@ public class Transaccion {
     }
 
     public void setEstado(String estado) {
-        this.estado = estado;
+        try {
+            this.estado = estado;
+        } catch (Exception e) {
+            System.out.println("Error al establecer estado de transacción: " + e.getMessage());
+        }
     }
 
     @Override
     public String toString() {
-        return "Transaccion{" +
-                "Tipo ='" + tipo + '\'' +
-                ", Usuario ='" + usuario.getNombre() + '\'' +
-                ", Criptomoneda ='" + criptomoneda.getName() + '\'' +
-                ", Cantidad ='" + cantidadCripto + '\'' +
-                ", Estado ='" + estado + '\'' +
-                '}';
+        try {
+            return "Transaccion{" +
+                    "Tipo ='" + tipo + '\'' +
+                    ", Usuario ='" + usuario.getNombre() + '\'' +
+                    ", Criptomoneda ='" + criptomoneda.getName() + '\'' +
+                    ", Cantidad ='" + cantidadCripto + '\'' +
+                    ", Estado ='" + estado + '\'' +
+                    '}';
+        } catch (Exception e) {
+            return "Transaccion{Error al mostrar datos}";
+        }
     }
 }

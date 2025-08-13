@@ -1,9 +1,14 @@
 package parcial.eda.Model.Transaccion;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import parcial.eda.Model.Criptomoneda.Criptomoneda;
 import parcial.eda.Model.Usuario.Usuario;
 
 public class Transaccion {
+
+    private static final Logger logger = LogManager.getLogger(Transaccion.class);
 
     private String tipo;
     private Usuario usuario;
@@ -20,10 +25,16 @@ public class Transaccion {
             this.cantidadCripto = cantidadCripto;
             this.valorTotal = criptomoneda.getPrice_usdAsDouble() * cantidadCripto;
             this.estado = "Pendiente";
+            logger.info("Transacción creada: Tipo=" + tipo +
+                        ", Usuario=" + usuario.getNombre() +
+                        ", Criptomoneda=" + criptomoneda.getName() +
+                        ", Cantidad=" + cantidadCripto +
+                        ", ValorTotal=" + valorTotal +
+                        ", Estado=Pendiente");
         } catch (Exception e) {
             this.valorTotal = -1; // Valor de error
             this.estado = "Error";
-            System.out.println("Error al crear transacción: " + e.getMessage());
+            logger.error("Error al crear transacción", e);
         }
     }
 
@@ -34,8 +45,9 @@ public class Transaccion {
     public void setTipo(String tipo) {
         try {
             this.tipo = tipo;
+            logger.info("Tipo de transacción actualizado a: " + tipo);
         } catch (Exception e) {
-            System.out.println("Error al establecer tipo de transacción: " + e.getMessage());
+            logger.error("Error al establecer tipo de transacción", e);
         }
     }
 
@@ -62,22 +74,26 @@ public class Transaccion {
     public void setEstado(String estado) {
         try {
             this.estado = estado;
+            logger.info("Estado de transacción actualizado a: " + estado);
         } catch (Exception e) {
-            System.out.println("Error al establecer estado de transacción: " + e.getMessage());
+            logger.error("Error al establecer estado de transacción", e);
         }
     }
 
     @Override
     public String toString() {
         try {
-            return "Transaccion{" +
-                    "Tipo ='" + tipo + '\'' +
-                    ", Usuario ='" + usuario.getNombre() + '\'' +
-                    ", Criptomoneda ='" + criptomoneda.getName() + '\'' +
-                    ", Cantidad ='" + cantidadCripto + '\'' +
-                    ", Estado ='" + estado + '\'' +
+            String datos = "Transaccion{" +
+                    "Tipo='" + tipo + '\'' +
+                    ", Usuario='" + usuario.getNombre() + '\'' +
+                    ", Criptomoneda='" + criptomoneda.getName() + '\'' +
+                    ", Cantidad='" + cantidadCripto + '\'' +
+                    ", Estado='" + estado + '\'' +
                     '}';
+            logger.info("Generando representación de transacción: " + datos);
+            return datos;
         } catch (Exception e) {
+            logger.error("Error al generar toString de Transaccion", e);
             return "Transaccion{Error al mostrar datos}";
         }
     }

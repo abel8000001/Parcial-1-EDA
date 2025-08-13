@@ -8,6 +8,9 @@ import java.util.Queue;
 import java.util.Random;
 import java.util.Stack;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import parcial.eda.Model.Criptomoneda.Criptomoneda;
 import parcial.eda.Model.Mercado.Mercado;
 import parcial.eda.Model.Transaccion.Transaccion;
@@ -16,8 +19,11 @@ import parcial.eda.Services.ProcesadorTransacciones;
 import parcial.eda.Services.Utilidades;
 
 public class App {
+    private static final Logger logger = LogManager.getLogger(App.class);
     public static void main(String[] args) {
         try {
+            logger.info("Inicio de la aplicación de simulación de mercado de criptomonedas");
+
             int turno = 1;
             Queue<Usuario> usuarios = new LinkedList<>();
             Random random = new Random();
@@ -29,16 +35,20 @@ public class App {
 
             // Instanciar usuarios
             try {
+                logger.info("Instanciando usuarios para la simulación");
                 for (int i = 0; i < 5; i++) {
                     usuarios.add(new Usuario("usuario" + (i + 1)));
+                    logger.info("Usuario creado: usuario" + (i + 1));
                 }
             } catch (Exception e) {
+                logger.error("Error al instanciar usuarios: " + e.getMessage());
                 System.out.println("Error al instanciar usuarios: " + e.getMessage());
             }
 
             // Simulación de turnos
             while (turno <= 10) {
                 try {
+                    logger.info("Iniciando turno " + turno);
                     System.out.println("Turno " + turno + "\n");
 
                     // Ciclo de compra y venta
@@ -46,9 +56,11 @@ public class App {
                         try {
                             switch (random.nextInt(2)) {
                                 case 0:
+                                    logger.info(usuario.getNombre() + " intentará realizar una compra");
                                     Mercado.comprar(usuario, Mercado.criptomonedas.get(random.nextInt(100)), random.nextInt(100));
                                     break;
                                 case 1:
+                                    logger.info(usuario.getNombre() + " intentará realizar una venta");
                                     tamañoPortafolioActual = usuario.getPortafolio().size();
                                     if (tamañoPortafolioActual > 0) {
                                         Random rand = new Random();
@@ -62,55 +74,71 @@ public class App {
                                             indiceMonedaAleatoria++;
                                         }
                                         Mercado.vender(usuario, monedaAleatoria, random.nextInt(100));
+                                    } else {
+                                        logger.info(usuario.getNombre() + " no tiene monedas para vender");
                                     }
                                     break;
                                 default:
+                                    logger.error("Opción de transacción inesperada para " + usuario.getNombre());
                                     System.out.println("Error inesperado");
                                     break;
                             }
                         } catch (Exception e) {
+                            logger.error("Error en compra/venta para usuario " + usuario.getNombre() + ": " + e.getMessage());
                             System.out.println("Error en compra/venta para usuario " + usuario.getNombre() + ": " + e.getMessage());
                         }
                     }
 
                     // Verificación de transacciones
                     try {
+                        logger.info("Procesando transacciones del turno " + turno);
                         ProcesadorTransacciones.procesarTransacciones();
                         for (Usuario usuario : usuarios) {
                             Stack<Transaccion> historial = usuario.getHistorial();
                             if (historial == null || historial.isEmpty()) {
+                                logger.info("El usuario " + usuario.getNombre() + " no tiene transacciones registradas");
                                 continue;
                             }
                             transaccionActual = historial.peek();
 
                             if (transaccionActual.getTipo() == "Compra" && transaccionActual.getEstado() == "Aprobado") {
+                                logger.info("Compra aprobada para " + usuario.getNombre());
                                 System.out.println(usuario.getNombre() + " compró exitosamente " + transaccionActual.getCantidadCripto() + " " + transaccionActual.getCriptomoneda().getName() + " por $USD " + transaccionActual.getValorTotal());
                             } else if (transaccionActual.getTipo() == "Compra" && transaccionActual.getEstado() == "Rechazado") {
+                                logger.info("Compra rechazada para " + usuario.getNombre());
                                 System.out.println(usuario.getNombre() + " no tiene suficiente saldo para comprar " + transaccionActual.getCantidadCripto() + " " + transaccionActual.getCriptomoneda().getName());
                             } else if (transaccionActual.getTipo() == "Venta" && transaccionActual.getEstado() == "Aprobado") {
+                                logger.info("Venta aprobada para " + usuario.getNombre());
                                 System.out.println(usuario.getNombre() + " vendió exitosamente" + transaccionActual.getCantidadCripto() + " " + transaccionActual.getCriptomoneda().getName() + " por $USD " + transaccionActual.getValorTotal());
                             } else if (transaccionActual.getTipo() == "Venta" && transaccionActual.getEstado() == "Rechazado") {
+                                logger.info("Venta rechazada para " + usuario.getNombre());
                                 System.out.println(usuario.getNombre() + " no tiene suficiente " + transaccionActual.getCriptomoneda().getName() + " para vender");
                             } else {
+                                logger.error("Transacción desconocida para " + usuario.getNombre());
                                 System.out.println("Transacción desconocida");
                             }
                         }
                     } catch (Exception e) {
+                        logger.error("Error al procesar transacciones: " + e.getMessage());
                         System.out.println("Error al procesar transacciones: " + e.getMessage());
                     }
 
                     // Fluctuación monedas
                     try {
+                        logger.info("Iniciando fluctuación de precios de criptomonedas");
                         for (Criptomoneda moneda : Mercado.criptomonedas) {
                             moneda.setPrice_usd(Double.toString(moneda.getPrice_usdAsDouble() * Utilidades.randomEnRango(0.60, 1.60)));
                         }
                     } catch (Exception e) {
+                        logger.error("Error en fluctuación de monedas: " + e.getMessage());
                         System.out.println("Error en fluctuación de monedas: " + e.getMessage());
                     }
 
                     turno++;
+                    logger.info("Fin del turno " + (turno - 1));
                     System.out.println();
                 } catch (Exception e) {
+                    logger.error("Error en turno " + turno + ": " + e.getMessage());
                     System.out.println("Error en turno " + turno + ": " + e.getMessage());
                     turno++;
                 }
@@ -118,8 +146,10 @@ public class App {
 
             // Reporte final
             try {
+                logger.info("Generando reporte final de usuarios");
                 System.out.println("\n--------------------------------------------------Reporte de Usuarios--------------------------------------------------\n");
                 for (Usuario usuario : usuarios) {
+                    logger.info("Reporte generado para el usuario " + usuario.getNombre());
                     System.out.println("Usuario: " + usuario.getNombre());
                     System.out.println("Saldo (USD): $" + Utilidades.pesoAUsd(usuario.getSaldo()) + "\n");
                     System.out.println("Valor total del portafolio (USD): $" + usuario.getValorTotalPortafolio());
@@ -137,9 +167,11 @@ public class App {
                     System.out.println();
                 }
             } catch (Exception e) {
+                logger.error("Error en reporte final: " + e.getMessage());
                 System.out.println("Error en reporte final: " + e.getMessage());
             }
         } catch (Exception e) {
+            logger.error("Error crítico en la ejecución de la aplicación: " + e.getMessage());
             System.out.println("Error");
         }
     }

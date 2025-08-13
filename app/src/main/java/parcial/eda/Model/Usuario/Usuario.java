@@ -4,11 +4,16 @@ import java.util.Stack;
 
 import org.apache.commons.collections4.Bag;
 import org.apache.commons.collections4.bag.HashBag;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import parcial.eda.Model.Criptomoneda.Criptomoneda;
 import parcial.eda.Model.Transaccion.Transaccion;
 
 public class Usuario {
+
+    private static final Logger logger = LogManager.getLogger(Usuario.class);
+
     private String nombre;
     private double saldo;
     Bag<Criptomoneda> portafolio;
@@ -20,11 +25,12 @@ public class Usuario {
             this.saldo = 100000000;
             this.portafolio = new HashBag<>();
             this.historial = new Stack<>();
+            logger.info("Usuario creado: Nombre=" + nombre + ", Saldo inicial=" + saldo);
         } catch (Exception e) {
-            System.out.println("Error al crear usuario: " + e.getMessage());
             this.portafolio = new HashBag<>();
             this.historial = new Stack<>();
             this.saldo = 0;
+            logger.error("Error al crear usuario con nombre: " + nombre, e);
         }
     }
 
@@ -35,8 +41,9 @@ public class Usuario {
     public void setSaldo(double saldo) {
         try {
             this.saldo = saldo;
+            logger.info("Saldo actualizado para usuario " + nombre + ": Nuevo saldo=" + saldo);
         } catch (Exception e) {
-            System.out.println("Error al establecer saldo: " + e.getMessage());
+            logger.error("Error al establecer saldo para usuario " + nombre, e);
         }
     }
 
@@ -51,8 +58,9 @@ public class Usuario {
     public void setPortafolio(Bag<Criptomoneda> portafolio) {
         try {
             this.portafolio = portafolio;
+            logger.info("Portafolio actualizado para usuario " + nombre);
         } catch (Exception e) {
-            System.out.println("Error al establecer portafolio: " + e.getMessage());
+            logger.error("Error al establecer portafolio para usuario " + nombre, e);
         }
     }
 
@@ -66,9 +74,10 @@ public class Usuario {
             for (Criptomoneda c : portafolio) {
                 total += c.getPrice_usdAsDouble();
             }
+            logger.info("Valor total del portafolio para usuario " + nombre + ": " + total);
             return total;
         } catch (Exception e) {
-            System.out.println("Error al calcular valor total del portafolio: " + e.getMessage());
+            logger.error("Error al calcular valor total del portafolio para usuario " + nombre, e);
             return -1; // Valor de error
         }
     }
@@ -76,8 +85,9 @@ public class Usuario {
     public void addEntradaHistorial(Transaccion transaccion) {
         try {
             historial.push(transaccion);
+            logger.info("Transacción añadida al historial de usuario " + nombre + ": " + transaccion);
         } catch (Exception e) {
-            System.out.println("Error al agregar transacción al historial: " + e.getMessage());
+            logger.error("Error al agregar transacción al historial para usuario " + nombre, e);
         }
     }
 }

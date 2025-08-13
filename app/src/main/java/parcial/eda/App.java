@@ -109,20 +109,25 @@ public class App {
         }
 
         // Reporte final
-        System.out.println("\nReporte final\n");
+        System.out.println("\n--------------------------------------------------Reporte de Usuarios--------------------------------------------------\n");
         for (Usuario usuario : usuarios) {
             System.out.println("Usuario: " + usuario.getNombre());
-            System.out.println("Saldo (USD): $" + Utilidades.pesoAUsd(usuario.getSaldo()));
+            System.out.println("Saldo (USD): $" + Utilidades.pesoAUsd(usuario.getSaldo()) + "\n");
             System.out.println("Valor total del portafolio (USD): $" + usuario.getValorTotalPortafolio());
             System.out.println("Portafolio final:");
             for (Criptomoneda criptomoneda : usuario.getPortafolio().uniqueSet()) {
                 System.out.println("\t" + criptomoneda.getName() + ": " + usuario.getPortafolio().getCount(criptomoneda));
             }
 
+            System.out.println("");
+
+            System.out.println("**************Historico de transacciones**************\n");
+
             while (!usuario.getHistorial().isEmpty()) {
                 transaccionActual = usuario.getHistorial().pop();
                 System.out.println(transaccionActual.toString());
             }
+            System.out.println("\n---------------------------------------------------------------------------------------------------------------------");
             System.out.println();
         }
     }

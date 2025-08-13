@@ -13,36 +13,30 @@ public class ProcesadorTransacciones {
         Usuario usuarioActual;
         Criptomoneda criptomonedaActual;
         int cantidadCriptoATransferir;
-        double valorTotalCriptomonedas;
 
+        // Itera y va consumiendo todas las transacciones
         while (!Mercado.libroOrdenesMercado.isEmpty()) {
             transaccionActual = Mercado.libroOrdenesMercado.poll();
             usuarioActual = transaccionActual.getUsuario();
             criptomonedaActual = transaccionActual.getCriptomoneda();
             cantidadCriptoATransferir = transaccionActual.getCantidadCripto();
-            valorTotalCriptomonedas = criptomonedaActual.getPrice_usdAsDouble() * cantidadCriptoATransferir;
 
 
             if (transaccionActual.getTipo() == "Compra") {
 
-                if (Utilidades.pesoAUsd(usuarioActual.getSaldo()) < valorTotalCriptomonedas) {
-                    System.out.println("El usuario " + usuarioActual.getNombre()
-                            + " no tiene suficiente saldo para comprar " + cantidadCriptoATransferir + " "
-                            + criptomonedaActual.getName());
+                if (Utilidades.pesoAUsd(usuarioActual.getSaldo()) < transaccionActual.getValorTotal()) {
                     transaccionActual.setEstado("Rechazado");
                     usuarioActual.addEntradaHistorial(transaccionActual);
                     continue;
                 }
 
                 transaccionActual.setEstado("Aprobado");
-                usuarioActual.setSaldo(usuarioActual.getSaldo() - Utilidades.usdAPeso(valorTotalCriptomonedas));
+                usuarioActual.setSaldo(usuarioActual.getSaldo() - Utilidades.usdAPeso(transaccionActual.getValorTotal()));
                 usuarioActual.getPortafolio().add(criptomonedaActual, cantidadCriptoATransferir);
                 usuarioActual.addEntradaHistorial(transaccionActual);
 
             } else if (transaccionActual.getTipo() == "Venta") {
                 if (usuarioActual.getPortafolio().getCount(criptomonedaActual) < cantidadCriptoATransferir) {
-                    System.out.println("El usuario " + usuarioActual.getNombre()
-                            + " no tiene suficiente " + criptomonedaActual.getName() + " para vender");
                     transaccionActual.setEstado("Rechazado");
                     usuarioActual.addEntradaHistorial(transaccionActual);
                     continue;
@@ -50,7 +44,7 @@ public class ProcesadorTransacciones {
 
                 transaccionActual.setEstado("Aprobado");
                 usuarioActual.getPortafolio().remove(criptomonedaActual, cantidadCriptoATransferir);
-                usuarioActual.setSaldo(usuarioActual.getSaldo() + Utilidades.usdAPeso(valorTotalCriptomonedas));
+                usuarioActual.setSaldo(usuarioActual.getSaldo() + Utilidades.usdAPeso(transaccionActual.getValorTotal()));
                 usuarioActual.addEntradaHistorial(transaccionActual);
             }
         }

@@ -35,6 +35,10 @@ public class Criptomoneda {
         return price_usd;
     }
 
+    public double getPrice_usdAsDouble() {
+        return Double.parseDouble(price_usd);
+    }
+
     public void setPrice_usd(String price_usd) {
         this.price_usd = price_usd;
     }
@@ -48,9 +52,4 @@ public class Criptomoneda {
                 ", price_usd='" + price_usd + '\'' +
                 '}';
     }
-
-    public double getPrice_usdAsDouble() {
-        return Double.parseDouble(price_usd);
-    }
-
 }

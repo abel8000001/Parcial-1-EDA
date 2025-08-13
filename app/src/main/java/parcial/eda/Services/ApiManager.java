@@ -43,8 +43,7 @@ public class ApiManager {
             // Convertir el array a una lista
             List<Criptomoneda> criptomonedas = Arrays.asList(criptomonedasArray);
 
-            // Imprimir las criptomonedas
-            criptomonedas.forEach(System.out::println);
+            System.out.println("Base de datos obtenida con exito\n");
 
             return criptomonedas;
 

@@ -7,46 +7,21 @@ import org.apache.commons.collections4.bag.HashBag;
 
 import parcial.eda.Model.Criptomoneda.Criptomoneda;
 import parcial.eda.Model.Transaccion.Transaccion;
-import parcial.eda.Services.Utilidades;
 
 public class Usuario {
-
-    private static int id;
     private String nombre;
     private double saldo;
     Bag<Criptomoneda> portafolio;
     Stack<Transaccion> historial;
 
-    public Usuario (String nombre){
+    public Usuario(String nombre) {
         this.nombre = nombre;
-        saldo = Utilidades.randomEnRango(1, 1000000000);
-        id++;
+        saldo = 100000000;
         portafolio = new HashBag<>();
         historial = new Stack<>();
     }
 
-    public void consignar(double cantidad){
-        if (cantidad < 0) {
-            System.out.println("Cantidad a consignar no puede ser menor que 0");
-            return;
-        }
-        saldo += cantidad;
-    }
-
-    public void retirar(double cantidad){
-        if (cantidad < 0) {
-            System.out.println("Cantidad a retirar no puede ser menor que 0");
-            return;
-        }
-
-        if(saldo < cantidad){
-            System.out.println("Fondos insuficientes");
-        }
-
-        saldo -= cantidad;
-    }
-
-    public double getSaldo(){
+    public double getSaldo() {
         return saldo;
     }
 
@@ -54,7 +29,7 @@ public class Usuario {
         this.saldo = saldo;
     }
 
-    public String getNombre(){
+    public String getNombre() {
         return nombre;
     }
 
@@ -68,6 +43,14 @@ public class Usuario {
 
     public Stack<Transaccion> getHistorial() {
         return historial;
+    }
+
+    public double getValorTotalPortafolio() {
+        double total = 0;
+        for (Criptomoneda c : portafolio) {
+            total += c.getPrice_usdAsDouble();
+        }
+        return total;
     }
 
     public void addEntradaHistorial(Transaccion transaccion) {

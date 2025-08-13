@@ -6,6 +6,7 @@ public class Utilidades {
         return min + (double)(Math.random() * (max - min + 1));
     }
 
+    // Conversiones de divisas
     public static double usdAPeso(double usd) {
         return usd * 4000;
     }

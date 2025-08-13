@@ -4,22 +4,20 @@
 package parcial.eda;
 
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Queue;
 import java.util.Random;
+import java.util.Stack;
 
 import parcial.eda.Model.Criptomoneda.Criptomoneda;
 import parcial.eda.Model.Mercado.Mercado;
 import parcial.eda.Model.Transaccion.Transaccion;
 import parcial.eda.Model.Usuario.Usuario;
-import parcial.eda.Services.ApiManager;
 import parcial.eda.Services.ProcesadorTransacciones;
 import parcial.eda.Services.Utilidades;
 
 public class App {
     public static void main(String[] args) {
-        int turno = 0;
-        List<Criptomoneda> criptomonedas = ApiManager.consumirApi();
+        int turno = 1;
         Queue<Usuario> usuarios = new LinkedList<>();
         Random random = new Random();
         int tamañoPortafolioActual;
@@ -28,18 +26,24 @@ public class App {
         Criptomoneda monedaAleatoria = new Criptomoneda();
         Transaccion transaccionActual;
 
+        // Instanciar usuarios
         for (int i = 0; i < 5; i++) {
-            usuarios.add(new Usuario("usuario" + i));
+            usuarios.add(new Usuario("usuario" + (i + 1)));
         }
 
-        while (turno < 10) {
+        // Simulacion de turnos
+        while (turno <= 10) {
+
+            System.out.println("Turno " + turno + "\n");
 
             // Ciclo de compra y venta
             for (Usuario usuario : usuarios) {
                 switch (random.nextInt(2)) {
+                    // Caso comprar
                     case 0:
-                        Mercado.comprar(usuario, criptomonedas.get(random.nextInt(100)), random.nextInt(100));
+                        Mercado.comprar(usuario, Mercado.criptomonedas.get(random.nextInt(100)), random.nextInt(100));
                         break;
+                    // Caso vender
                     case 1:
                         tamañoPortafolioActual = usuario.getPortafolio().size();
                         if (tamañoPortafolioActual > 0) {
@@ -64,23 +68,55 @@ public class App {
 
             // Verificacion de las transacciones
             ProcesadorTransacciones.procesarTransacciones();
+            for (Usuario usuario : usuarios) {
+
+                Stack<Transaccion> historial = usuario.getHistorial();
+                if (historial == null || historial.isEmpty()) {
+                    continue; // Pasa al siguiente usuario sin intentar peek()
+                }
+
+                transaccionActual = historial.peek();
+
+                if (transaccionActual.getTipo() == "Compra" && transaccionActual.getEstado() == "Aprobado") {
+                    System.out.println(
+                            usuario.getNombre() + " compró exitosamente " + transaccionActual.getCantidadCripto() + " "
+                                    + transaccionActual.getCriptomoneda().getName() + " por $USD "
+                                    + transaccionActual.getValorTotal());
+                } else if (transaccionActual.getTipo() == "Compra" && transaccionActual.getEstado() == "Rechazado") {
+                    System.out.println(usuario.getNombre()
+                            + " no tiene suficiente saldo para comprar " + transaccionActual.getCantidadCripto() + " "
+                            + transaccionActual.getCriptomoneda().getName());
+                } else if (transaccionActual.getTipo() == "Venta" && transaccionActual.getEstado() == "Aprobado") {
+                    System.out.println(
+                            usuario.getNombre() + " vendió exitosamente" + transaccionActual.getCantidadCripto() + " "
+                                    + transaccionActual.getCriptomoneda().getName() + " por $USD "
+                                    + transaccionActual.getValorTotal());
+                } else if (transaccionActual.getTipo() == "Venta" && transaccionActual.getEstado() == "Rechazado") {
+                    System.out.println(usuario.getNombre()
+                            + " no tiene suficiente " + transaccionActual.getCriptomoneda().getName() + " para vender");
+                } else {
+                    System.out.println("Transacción desconocida");
+                }
+            }
 
             // Fluctuacion monedas
-            for (Criptomoneda moneda : criptomonedas) {
+            for (Criptomoneda moneda : Mercado.criptomonedas) {
                 moneda.setPrice_usd(
-                        Double.toString(moneda.getPrice_usdAsDouble() * Utilidades.randomEnRango(0.90, 1.10)));
+                        Double.toString(moneda.getPrice_usdAsDouble() * Utilidades.randomEnRango(0.60, 1.60)));
             }
             turno++;
+            System.out.println();
         }
 
         // Reporte final
+        System.out.println("\nReporte final\n");
         for (Usuario usuario : usuarios) {
             System.out.println("Usuario: " + usuario.getNombre());
-            System.out.println("Saldo: $" + Utilidades.pesoAUsd(usuario.getSaldo()));
-            System.out.println("Valor total del portafolio:" /* TODO */);
+            System.out.println("Saldo (USD): $" + Utilidades.pesoAUsd(usuario.getSaldo()));
+            System.out.println("Valor total del portafolio (USD): $" + usuario.getValorTotalPortafolio());
             System.out.println("Portafolio final:");
             for (Criptomoneda criptomoneda : usuario.getPortafolio().uniqueSet()) {
-                System.out.println(criptomoneda.getName() + ": " + usuario.getPortafolio().getCount(criptomoneda));
+                System.out.println("\t" + criptomoneda.getName() + ": " + usuario.getPortafolio().getCount(criptomoneda));
             }
 
             while (!usuario.getHistorial().isEmpty()) {

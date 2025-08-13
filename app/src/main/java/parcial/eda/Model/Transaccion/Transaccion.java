@@ -9,6 +9,7 @@ public class Transaccion {
     private Usuario usuario;
     private Criptomoneda criptomoneda;
     private int cantidadCripto;
+    private double valorTotal;
     private String estado;
 
     public Transaccion(String tipo, Usuario usuario, Criptomoneda criptomoneda, int cantidadCripto){
@@ -16,6 +17,7 @@ public class Transaccion {
         this.usuario = usuario;
         this.criptomoneda = criptomoneda;
         this.cantidadCripto = cantidadCripto;
+        valorTotal = criptomoneda.getPrice_usdAsDouble() * cantidadCripto;
         estado = "Pendiente";
     }
 
@@ -37,6 +39,10 @@ public class Transaccion {
 
     public int getCantidadCripto() {
         return cantidadCripto;
+    }
+
+    public double getValorTotal() {
+        return valorTotal;
     }
 
     public String getEstado() {
